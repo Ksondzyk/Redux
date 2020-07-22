@@ -4,10 +4,10 @@ export const themes = {
     fontColor: "#ffffff",
     background: "#222222",
   },
-  ligth: {
+  light: {
     fontColor: "#000000",
     background: "#eeeeee",
   },
 };
 
-export const ThemeContex = React.createContext(themes.ligth);
+export const ThemeContext = React.createContext(themes.dark);

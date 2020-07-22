@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { ThemeContex } from "./themes-contex";
+import React from "react";
+import { ThemeContext } from "./themes-context";
 
-class ThemedButton extends Component {
+class ThemedButton extends React.Component {
   render() {
     console.log(this.context);
     return (
@@ -16,5 +16,7 @@ class ThemedButton extends Component {
     );
   }
 }
-ThemedButton.contextType = ThemeContex;
+
+ThemedButton.contextType = ThemeContext;
+
 export default ThemedButton;
