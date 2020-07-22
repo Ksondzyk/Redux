@@ -6,10 +6,10 @@ class UserMenu extends Component {
     console.log(this.context);
     return (
       <div className="menu">
-        <span className="menu__greeting">Hello, Nikola Tesla</span>
+        <span className="menu__greeting">{`Hello, ${this.context.name}`}</span>
         <img
           alt="User Avatar"
-          src="https://avatars3.githubusercontent.com/u10001"
+          src={this.context.avatar_url}
           className="menu__avatar"
         />
       </div>
