@@ -5,7 +5,6 @@ const actionCreators = {
 };
 
 export const usersReducer = (state = actionCreators, action) => {
-  console.log(action);
   switch (action.type) {
     case ADDUSER:
       return {
