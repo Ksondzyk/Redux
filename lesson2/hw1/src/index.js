@@ -1,3 +1,3 @@
 import store from "./store";
 
-console.log(store.dispatch());
+console.log(store.getState());
