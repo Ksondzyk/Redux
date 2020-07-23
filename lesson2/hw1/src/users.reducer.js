@@ -5,16 +5,17 @@ const actionCreators = {
 };
 
 export const usersReducer = (state = actionCreators, action) => {
+  const { usersList } = state;
   switch (action.type) {
     case ADDUSER:
       return {
         ...state,
-        usersList: state.usersList.concat({ id: action.id, name: "Sarah" }),
+        usersList: usersList.concat(action.user),
       };
     case DELETEUSER:
       return {
         ...state,
-        usersList: state.usersList.filter(({ id }) => id === action.id),
+        usersList: usersList.filter(({ id }) => id !== action.id),
       };
 
     default:

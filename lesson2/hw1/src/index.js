@@ -1,9 +1,11 @@
 import store from "./store";
 import { addUser, deleteUser } from "./users.actions";
 
-store.dispatch(addUser());
-store.dispatch(addUser());
-store.dispatch(addUser());
+store.dispatch(addUser({ id: 12, name: "roman" }));
+store.dispatch(addUser({ id: 13, name: "masha" }));
+store.dispatch(addUser({ id: 14, name: "colia" }));
+store.dispatch(deleteUser({ id: 14, name: "colia" }));
+store.dispatch(deleteUser({ id: 12, name: "roman" }));
 
 console.log(store.getState());
 console.log(store);
