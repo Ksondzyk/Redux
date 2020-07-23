@@ -15,7 +15,7 @@ export const usersReducer = (state = actionCreators, action) => {
     case DELETEUSER:
       return {
         ...state,
-        usersList: usersList.filter(({ id }) => id === action.id),
+        usersList: usersList.filter(({ id }) => id !== action.id),
       };
 
     default:
