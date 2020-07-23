@@ -3,7 +3,7 @@ import { addUser, deleteUser, ADDUSER, DELETEUSER } from "./users.actions";
 const actionCreators = {
   create: [],
 };
-const usersReducer = (state = actionCreators, action) => {
+export const usersReducer = (state = actionCreators, action) => {
   switch (action.type) {
     case ADDUSER:
       return {
