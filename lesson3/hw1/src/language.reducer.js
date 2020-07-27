@@ -4,7 +4,10 @@ export const lenguageReducer = (state = "en", action) => {
   console.log(action);
   switch (action.type) {
     case LANGUAGE: {
-      return { ...state, ...action.language.curentLanguage };
+      if (action.language.curentLanguage.length === 0) {
+        return state;
+      }
+      return action.language.curentLanguage;
     }
     default:
       return state;
