@@ -5,14 +5,8 @@ import { addProduct, removeProduct } from "./cart.actions";
 import { setUser, removeUser } from "./users.actions";
 
 store.subscribe(() => console.log(store.getState()));
-// store.dispatch(increment());
-// store.dispatch(increment());
-
-// store.dispatch(increment());
-// store.dispatch(reset());
-
-// store.dispatch(setLanguage());
-console.log(store.dispatch(setLanguage(20)));
+store.dispatch(setUser("roman"));
+console.log(store.dispatch(setLanguage()));
 console.log(store.dispatch(addProduct({ id: 1, name: "milk" })));
 
 // store.dispatch(

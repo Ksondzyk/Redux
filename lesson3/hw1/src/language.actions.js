@@ -1,13 +1,8 @@
 export const LANGUAGE = "CURRENT/LANGUAGE";
 
-export const setLanguage = (curentLanguage) => {
+export const setLanguage = (curentLanguage = "en") => {
   return {
     type: LANGUAGE,
-    language: {
-      curentLanguage,
-    },
+    language: { curentLanguage },
   };
 };
-
-// const userLang = navigator.language || navigator.userLanguage;
-// console.log(navigator.language.toString());

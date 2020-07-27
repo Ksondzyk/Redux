@@ -1,19 +1,11 @@
 import { LANGUAGE } from "./language.actions";
 
-const lenguageCurrent = {
-  lenguage: [],
-};
-export const lenguageReducer = (state = lenguageCurrent, action) => {
+export const lenguageReducer = (state = "", action) => {
   console.log(action);
   switch (action.type) {
     case LANGUAGE: {
-      const { curentLanguage } = action.language;
-      return {
-        ...state,
-        lenguage: curentLanguage,
-      };
+      return action.language.curentLanguage;
     }
-
     default:
       return state;
   }
