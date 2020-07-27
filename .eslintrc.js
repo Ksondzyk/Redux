@@ -1,11 +1,5 @@
 module.exports = {
-  extends: [
-    "react-app",
-    "airbnb-base",
-    "prettier",
-    // "plugin:jsx-a11y/recommended",
-    // "plugin:react-hooks/recommended",
-  ],
+  extends: ["react-app", "airbnb-base", "prettier"],
   plugins: ["jsx-a11y"],
   parser: "babel-eslint",
   env: {
