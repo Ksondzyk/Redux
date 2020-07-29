@@ -1,10 +1,10 @@
 import { createSelector } from "reselect";
 
 export const optionsListSelector = (state) => {
-  return state.options.optionsList;
+  return Object.values(state.options.optionsList);
 };
 export const selectedIdSelector = (state) => {
-  return state.options.selected;
+  return Object.values(state.options.selected);
 };
 export const selectedOptionSelector = createSelector(
   [optionsListSelector, selectedIdSelector],
