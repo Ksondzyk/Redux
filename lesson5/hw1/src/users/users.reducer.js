@@ -63,7 +63,7 @@ const users = {
 export const usersReducer = (state = users, action) => {
   switch (action.type) {
     case USER_ACTION: {
-      const text = action.filterText.textId;
+      const text = action.textId;
       return {
         ...state,
         filterText: text,

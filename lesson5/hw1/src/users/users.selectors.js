@@ -7,8 +7,3 @@ export const filterTextSelector = (state) => {
 export const usersListSelector = (state) => {
   return state.users.usersList;
 };
-
-export const filterUsersSelector = createSelector([
-  filterTextSelector,
-  usersListSelector,
-]);

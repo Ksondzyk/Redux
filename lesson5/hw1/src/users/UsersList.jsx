@@ -1,23 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
+import { userAction } from "./users.actions";
 import { filterTextSelector, usersListSelector } from "./users.selectors";
 import User from "./User";
 import Filter from "../Filter";
 
-const UsersList = ({ func, text, users }) => {
+const UsersList = ({ filterText, users, func }) => {
+  const handleChange = (event) => {
+    func(event.target.value.toLowerCase());
+  };
+
+  console.log(users);
   let result;
-  if (!text) {
+  if (!filterText) {
     result = users;
   } else {
     result = users.filter(({ name }) => {
-      return name.toLowerCase().includes(text);
+      return name.toLowerCase().includes(filterText);
     });
   }
 
-  console.log(result.length);
   return (
     <div>
-      <Filter onChange={func} filterText={text} count={result.length} />
+      <Filter
+        onChange={handleChange}
+        filterText={filterText}
+        count={result.length}
+      />
       <ul className="users">
         {result.map((user) => (
           <User key={user.id} {...user} />
@@ -28,10 +37,13 @@ const UsersList = ({ func, text, users }) => {
 };
 
 const mapState = (state) => {
-  return { text: filterTextSelector(state), users: usersListSelector(state) };
+  return {
+    filterText: filterTextSelector(state),
+    users: usersListSelector(state),
+  };
 };
 const mapDispatch = {
-  func: (event) => event.target.value.toLowerCase(),
+  func: userAction,
 };
 
 const connector = connect(mapState, mapDispatch)(UsersList);
