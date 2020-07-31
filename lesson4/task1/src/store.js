@@ -1,14 +1,9 @@
 import { createStore } from "redux";
-import store from "./store";
-
-import { conterReducer } from "./conter.reducer";
-const reducer = combineReducers({
-  users: usersReducer,
-  counter: conterReducer,
-});
+import { counterReducer } from "./counter.reducer";
 
 const store = createStore(
-  conterReducer,
+  counterReducer,
+  // eslint-disable-next-line no-underscore-dangle
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
