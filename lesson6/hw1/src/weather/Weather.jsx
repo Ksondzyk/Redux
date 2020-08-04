@@ -34,6 +34,6 @@ const mapState = (state) => {
   };
 };
 const mapDispatch = {
-  fetchUserData: weaterActions.fetchUserData,
+  fetchUserData: weaterActions.userDateRecieved,
 };
 export default connect(mapState, mapDispatch)(Weather);

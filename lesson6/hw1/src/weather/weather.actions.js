@@ -2,17 +2,23 @@ import { getCityData } from "./users.gateway";
 
 export const USER_DATA_CITY = "SER_DATA_CITY";
 
-export const userDateRecieved = (user) => {
+export const userDateRecieved = (userData) => {
   return {
     type: USER_DATA_CITY,
-    user,
+    payload: {
+      userData,
+    },
   };
 };
 
-export const fetchUserData = (userId) => {
+export const fetchUserData = () => {
   return function (dispatch) {
-    getCityData(userId).then((userData) => {
-      dispatch(userDateRecieved(userData));
-    });
+    getCityData()
+      .then((userData) => {
+        dispatch(userDateRecieved(userData));
+        dispatch(console.log(userData));
+        debugger;
+      })
+      .then((user) => console.log(user));
   };
 };

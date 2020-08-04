@@ -9,6 +9,7 @@ export const usersReducer = (state = initialData, action) => {
     case USER_DATA_CITY: {
       return {
         ...state,
+        userData: action.payload.userData,
       };
     }
     default:
