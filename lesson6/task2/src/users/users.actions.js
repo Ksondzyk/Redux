@@ -1,6 +1,7 @@
+import { getUserData } from "./users.gateway";
+
 export const SHOW_SPINNER = "SHOW_SPINNER";
 export const USER_DATA_RECEIVE = "USER_DATA_RECEIVE";
-import { getUserData } from "./users.gateway";
 
 export const showSpinner = () => {
   return {
