@@ -1,44 +1,45 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import * as usersActions from "./users.actions";
+import { getUserData } from "./users.gateway";
 
-class SearchField extends Component {
+class SearchField extends React.Component {
   state = {
     userName: "",
   };
 
   onChange = (event) => {
-    this.setState({ userName: event.target.value });
+    this.setState({
+      userName: event.target.value,
+    });
   };
 
-  handleUserSearch = () => {
-    this.props.fetchUserData(this.state.userName);
-  };
+  handleSearchUser = () => this.props.fetchUserdata(this.state.userName);
 
   render() {
-    console.log(this.props);
     return (
       <div className="name-form">
         <input
           type="text"
-          className="name-form__input"
           onChange={this.onChange}
           value={this.state.userName}
+          className="name-form__input"
         />
-        <button className="name-form__btn btn" onClick={this.handleUserSearch}>
+        <button onClick={this.handleSearchUser} className="name-form__btn btn">
           Show
         </button>
       </div>
     );
   }
 }
-SearchField.propTypes = {
-  showSpinner: PropTypes.func.isRequired,
-  userDateRecieved: PropTypes.func.isRequired,
-  fetchUserData: PropTypes.func.isRequired,
-};
+
 const mapDispatch = {
-  fetchUserData: usersActions.fetchUserData,
+  fetchUserdata: usersActions.fetchUserdata,
 };
+
+SearchField.propTypes = {
+  fetchUserdata: PropTypes.func.isRequired,
+};
+
 export default connect(null, mapDispatch)(SearchField);

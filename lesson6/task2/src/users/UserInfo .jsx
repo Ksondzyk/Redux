@@ -11,16 +11,13 @@ const UserInfo = ({ userData, isFetching }) => {
   if (!userData) {
     return null;
   }
+  const { avatar_url, name, location } = userData;
   return (
     <div className="user">
-      <img
-        alt="User Avatar"
-        src={userData.avatar_url}
-        className="user__avatar"
-      />
+      <img alt="User Avatar" src={avatar_url} className="user__avatar" />
       <div className="user__info">
-        <span className="user__name">Apple</span>
-        <span className="user__location">Cupertino, CA</span>
+        <span className="user__name">{name}</span>
+        <span className="user__location">{location}</span>
       </div>
     </div>
   );
@@ -28,15 +25,18 @@ const UserInfo = ({ userData, isFetching }) => {
 
 UserInfo.propTypes = {
   isFetching: PropTypes.bool.isRequired,
-  userData: PropTypes.shape({}),
+  userData: PropTypes.shape(),
 };
-UserInfo.defaultValue = {
+
+UserInfo.defaultProps = {
   userData: null,
 };
+
 const mapState = (state) => {
   return {
-    isFetching: isFetchingSelector(state),
     userData: userDataSelector(state),
+    isFetching: isFetchingSelector(state),
   };
 };
+
 export default connect(mapState)(UserInfo);
