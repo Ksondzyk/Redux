@@ -1,24 +1,20 @@
 import { getWeatherData } from "./users.gateway";
 
-export const USER_DATA_CITY = "SER_DATA_CITY";
+export const SHOW_DATA_CITY = "SER_DATA_CITY";
 
-export const userDateRecieved = (userData) => {
+export const userDateRecieved = (cities) => {
   return {
-    type: USER_DATA_CITY,
+    type: SHOW_DATA_CITY,
     payload: {
-      userData,
+      cities,
     },
   };
 };
 
-export const fetchUserData = () => {
+export const fetchUserdata = () => {
   return function (dispatch) {
-    getWeatherData()
-      .then((userData) => {
-        dispatch(userDateRecieved(userData));
-        dispatch(console.log(userData));
-        debugger;
-      })
-      .then((user) => console.log(user));
+    getWeatherData().then((userData) => {
+      dispatch(userDateRecieved(userData));
+    });
   };
 };

@@ -1,39 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import * as weaterActions from "./weather.actions";
-import { userDataSelector } from "./users.selectors";
+import { fetchUserdata } from "./weather.actions";
+import { userCitiesSelector } from "./users.selectors";
 
-class Weather extends React.Component {
-  render() {
-    console.log(this.props);
-    return (
-      <main className="weather">
-        <h1 className="weather__title">Weather data</h1>
-        <ul className="cities-list">
-          <li className="city">
-            <span className="city__name">Lake Hilmaside</span>
-            <span className="city__temperature">78 F</span>
-          </li>
-          <li className="city">
-            <span className="city__name">Lake Minnieberg</span>
-            <span className="city__temperature">8 F</span>
-          </li>
+const Weather = (props) => {
+  console.log(props);
+  useEffect(() => {
+    props.fetchUserdata();
+  }, [props, props.userData]);
 
-          <li className="city">
-            <span className="city__name">East Gerhardshire</span>
-            <span className="city__temperature">23 F</span>
-          </li>
-        </ul>
-      </main>
-    );
+  if (props.userData === null) {
+    return null;
   }
-}
+  return (
+    <main className="weather">
+      <h1 className="weather__title">Weather data</h1>
+      <ul className="cities-list">
+        {props.userData(({ id, temperature, name }) => (
+          <li className="city" key={id}>
+            <span className="city__name">{name}</span>
+            <span className="city__temperature">{temperature}</span>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
+};
+
 const mapState = (state) => {
   return {
-    userData: userDataSelector(state),
+    userData: userCitiesSelector(state),
   };
 };
 const mapDispatch = {
-  fetchUserData: weaterActions.userDateRecieved,
+  fetchUserdata,
 };
 export default connect(mapState, mapDispatch)(Weather);

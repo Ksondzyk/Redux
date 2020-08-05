@@ -1,15 +1,15 @@
-import { USER_DATA_CITY } from "./weather.actions";
+import { SHOW_DATA_CITY } from "./weather.actions";
 
 const initialData = {
-  userData: null,
+  city: null,
 };
 
 export const usersReducer = (state = initialData, action) => {
   switch (action.type) {
-    case USER_DATA_CITY: {
+    case SHOW_DATA_CITY: {
       return {
         ...state,
-        userData: action.payload.userData,
+        city: action.payload.cities,
       };
     }
     default:
