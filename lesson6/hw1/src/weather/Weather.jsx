@@ -29,7 +29,7 @@ const Weather = ({ fetchUser, cities }) => {
 
 const mapState = (state) => {
   return {
-    cities: state.users.city,
+    cities: userCitiesSelector(state),
   };
 };
 const mapDispatch = {
