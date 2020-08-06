@@ -1,4 +1,4 @@
-import { getWeatherData } from "./users.gateway";
+import { fetchWeatherData } from "./users.gateway";
 
 export const SHOW_DATA_CITY = "SHOW_DATA_CITY";
 
@@ -11,9 +11,9 @@ export const userDateRecieved = (cities) => {
   };
 };
 
-export const fetchUserdata = () => {
+export const getWeatherData = () => {
   return function (dispatch) {
-    getWeatherData()
+    fetchWeatherData()
       .then((cities) => {
         dispatch(userDateRecieved(cities));
       })

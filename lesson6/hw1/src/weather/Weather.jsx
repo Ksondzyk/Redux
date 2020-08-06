@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-import { fetchUserdata } from "./weather.actions";
+import { getWeatherData } from "./weather.actions";
 import { userCitiesSelector } from "./users.selectors";
 
 const Weather = ({ fetchUser, cities }) => {
@@ -33,6 +33,6 @@ const mapState = (state) => {
   };
 };
 const mapDispatch = {
-  fetchUser: fetchUserdata,
+  fetchUser: getWeatherData,
 };
 export default connect(mapState, mapDispatch)(Weather);
