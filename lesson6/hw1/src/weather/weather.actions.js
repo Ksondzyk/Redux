@@ -1,6 +1,6 @@
 import { getWeatherData } from "./users.gateway";
 
-export const SHOW_DATA_CITY = "SER_DATA_CITY";
+export const SHOW_DATA_CITY = "SHOW_DATA_CITY";
 
 export const userDateRecieved = (cities) => {
   return {
@@ -13,8 +13,10 @@ export const userDateRecieved = (cities) => {
 
 export const fetchUserdata = () => {
   return function (dispatch) {
-    getWeatherData().then((userData) => {
-      dispatch(userDateRecieved(userData));
-    });
+    getWeatherData()
+      .then((cities) => {
+        dispatch(userDateRecieved(cities));
+      })
+      .catch((err) => console.log(err));
   };
 };

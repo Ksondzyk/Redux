@@ -4,28 +4,24 @@ import { connect } from "react-redux";
 import { fetchUserdata } from "./weather.actions";
 import { userCitiesSelector } from "./users.selectors";
 
-const Weather = ({ fetchUserdata, userData }) => {
+const Weather = ({ fetchUser, cities }) => {
   useEffect(() => {
-    fetchUserdata();
-  }, [userData]);
+    fetchUser();
+  }, []);
+
+  if (cities === null) {
+    return null;
+  }
   return (
     <main className="weather">
       <h1 className="weather__title">Weather data</h1>
       <ul className="cities-list">
-        {userData(({ id, temperature, name }) => (
+        {cities.map(({ id, temperature, name }) => (
           <li className="city" key={id}>
             <span className="city__name">{name}</span>
-            <span className="city__temperature">{temperature}</span>
+            <span className="city__temperature">{`${temperature} F`}</span>
           </li>
         ))}
-        {/* <li className="city">
-          <span className="city__name">name</span>
-          <span className="city__temperature">temperature</span>
-        </li>
-        <li className="city">
-          <span className="city__name">name</span>
-          <span className="city__temperature">temperature</span>
-        </li> */}
       </ul>
     </main>
   );
@@ -33,10 +29,10 @@ const Weather = ({ fetchUserdata, userData }) => {
 
 const mapState = (state) => {
   return {
-    userData: userCitiesSelector(state),
+    cities: state.users.city,
   };
 };
 const mapDispatch = {
-  fetchUserdata,
+  fetchUser: fetchUserdata,
 };
 export default connect(mapState, mapDispatch)(Weather);
