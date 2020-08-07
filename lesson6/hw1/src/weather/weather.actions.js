@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import { fetchWeatherData } from "./users.gateway";
 
 export const SHOW_DATA_CITY = "SHOW_DATA_CITY";
